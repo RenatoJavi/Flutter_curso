@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-
+import 'package:flutter_application_1/screen/productoFul.dart';
 import 'package:flutter_application_1/screen/registro.dart';
+
+
+//import 'package:flutter_application_1/screen/registro.dart';
 //import 'package:flutter_application_1/pantallas/home_screen.dart';
 //import 'package:flutter_application_1/pantallas/login.dart';
 //import 'package:flutter/scheduler.dart';
 
 void main(){
 
-  runApp( MyApp( ));
+  runApp  ( MyApp( ));
 }
 
 class MyApp extends StatelessWidget{
@@ -20,7 +23,13 @@ class MyApp extends StatelessWidget{
     return  MaterialApp( debugShowCheckedModeBanner: false,
      // home: CounterScreen(), //cual es nuestro widget
      // home:LoginApp(),
-     home: Registro(),
+     home: ProductoFul(),
+     routes: {
+
+       '/home':(BuildContext content) =>ProductoFul(),
+       '/registro':(BuildContext content)=>Registro() ,
+
+     },
       
     );
     

@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utility/colorFuente.dart';
 
-///widget idependiente
+///widget idependientSTAEEE
 class Registro extends StatefulWidget{
   @override
   _RegistroState createState() => _RegistroState();
