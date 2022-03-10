@@ -16,6 +16,27 @@ class ProductoFul extends StatefulWidget{
 // ignore: camel_case_types
 class _ProductoFulState extends State<ProductoFul> {
   int counter=0; 
+
+  void increase(){ //funcion 1+
+      counter ++;
+      setState(() {
+        
+      });
+
+        }
+
+  void decrease(){ //funcion decrecer -!
+    counter--;
+          setState(() {
+                
+              });
+        }
+  void setNumero(){
+          counter=0;
+          setState(() {
+                
+              });
+        }
   @override
   Widget build(BuildContext context) {
     
@@ -47,61 +68,63 @@ class _ProductoFulState extends State<ProductoFul> {
 
 floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,  
         
-         floatingActionButton: Row(
-           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-           children: [ 
-                        
-             FloatingActionButton(
-                        child: Icon(Icons.exposure_plus_1_rounded),                     
-               
-               onPressed: (){             
-                 
-                 setState(() {   
-                   counter++; //es una funcion anonima
-                                
-                              });
-                
-               }             
-               
-               ),
-               SizedBox(width: 10.5,),
+         floatingActionButton: CustomFloatingActions(
 
-                  FloatingActionButton(
-                        child: Icon(Icons.restore_page_sharp),
-                     
-               
-               onPressed: (){             
-                 print( 'hoa $counter');
-                 setState(() {   
-                   counter=0; //es una funcion anonima
-                                
-                              });
-                
-               }              
-               
-               ),
-
-               SizedBox(width: 20),//separo los circulos
-
-                 FloatingActionButton(
-                        child: Icon(Icons.exposure_minus_1_outlined),
-                     
-               
-               onPressed: (){             
-                 print( 'hoa $counter');
-                 setState(() {   
-                   counter--; //es una funcion anonima
-                                
-                              });
-                
-               }              
-               
-               ),
-               
-           ],
+           increaseFn: increase, //envio la referenci -NO LA ESTOY EJECUTANTO
+          decreaseFn: decrease,
+          setFn: setNumero,
+          
+        
          ),
 
 
       );
   } 
+}
+//se ha creado un Widget totalmente indpendiente
+class CustomFloatingActions extends StatelessWidget {
+  final Function increaseFn ;
+  final Function decreaseFn;
+  final Function setFn;
+  const CustomFloatingActions({ //control +. añadir final  parametres
+    Key key, 
+    @required this.increaseFn,  //recivo el argumento y le asigno a una propiedad
+    //uso @required pq la necesito siempre
+    @required this.decreaseFn,
+    @required this.setFn,
+
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children:  [ 
+                   
+        FloatingActionButton(
+                   child: Icon(Icons.exposure_plus_1_rounded),                     
+          
+          onPressed: ()=>increaseFn(),  //mansdo a ejecutar la funcion      
+          
+          ),
+          SizedBox(width: 10.5,),
+
+             FloatingActionButton(
+                   child: Icon(Icons.restore_page_sharp),          
+          onPressed: ()=>setFn(),// mando a ejecutar la funcion             
+          
+          ),
+
+          SizedBox(width: 20),//separo los circulos
+
+            FloatingActionButton(
+                   child: Icon(Icons.exposure_minus_1_outlined),
+                         
+          onPressed: ()=>decreaseFn(),   ////manfo a ejecutar la funcion
+          
+          ),
+          
+      ],
+    );
+  }
 }
