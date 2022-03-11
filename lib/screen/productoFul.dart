@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utility/colorFuente.dart';
 
@@ -25,13 +21,13 @@ class _ProductoFulState extends State<ProductoFul> {
 
         }
 
-  void decrease(){ //funcion decrecer -!
+  void decrease(){ //metodo decrecer -!
     counter--;
           setState(() {
                 
               });
         }
-  void setNumero(){
+  void setNumero(){//metodo set numero
           counter=0;
           setState(() {
                 
@@ -83,9 +79,9 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 }
 //se ha creado un Widget totalmente indpendiente
 class CustomFloatingActions extends StatelessWidget {
-  final Function increaseFn ;
-  final Function decreaseFn;
-  final Function setFn;
+      final Function increaseFn ;
+      final Function decreaseFn;
+      final Function setFn;
   const CustomFloatingActions({ //control +. añadir final  parametres
     Key key, 
     @required this.increaseFn,  //recivo el argumento y le asigno a una propiedad
@@ -102,7 +98,7 @@ class CustomFloatingActions extends StatelessWidget {
       children:  [ 
                    
         FloatingActionButton(
-                   child: Icon(Icons.exposure_plus_1_rounded),                     
+                   child: const Icon(Icons.exposure_plus_1_rounded),                     
           
           onPressed: ()=>increaseFn(),  //mansdo a ejecutar la funcion      
           
@@ -110,7 +106,7 @@ class CustomFloatingActions extends StatelessWidget {
           SizedBox(width: 10.5,),
 
              FloatingActionButton(
-                   child: Icon(Icons.restore_page_sharp),          
+                   child:const Icon(Icons.restore_page_sharp),          
           onPressed: ()=>setFn(),// mando a ejecutar la funcion             
           
           ),
@@ -118,7 +114,7 @@ class CustomFloatingActions extends StatelessWidget {
           SizedBox(width: 20),//separo los circulos
 
             FloatingActionButton(
-                   child: Icon(Icons.exposure_minus_1_outlined),
+                   child:const Icon(Icons.exposure_minus_1_outlined),
                          
           onPressed: ()=>decreaseFn(),   ////manfo a ejecutar la funcion
           
